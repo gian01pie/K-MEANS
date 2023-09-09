@@ -1,13 +1,13 @@
+package data;
+
 /**
- * classe astratta Attribute:
- * modella le entità attributo membri e metodi comuni a tutti gli attributi, siano essi continui o discreti.
- * Inoltre, il costruttore viene definito in modo che sia richiesto il nome e l'identificativo numerico dell'attributo,
+ * Classe astratta data.Attribute: modella le entità attributo.
  * e il metodo toString() viene sovrascritto per restituire il nome dell'attributo come rappresentazione dell'oggetto.
  */
 abstract class Attribute {
     // Membri attributi
     /**
-     * nome simbolico dell'attributo
+     * nome simbolico dell'attributo (i.e. "sunny", "x1"...)
      */
     protected String name;
     /**
@@ -16,11 +16,10 @@ abstract class Attribute {
     protected int index;
 
     /**
-     * Costruttore di classe che inizializza i valori dei membri name, index
+     * Costruttore di classe che inizializza i valori di name e index
      *
      * @param name nome simbolico dell'attributo
      * @param index identificativo numerico dell'attributo
-     * @return
      */
     Attribute(String name, int index) {
         this.name = name;

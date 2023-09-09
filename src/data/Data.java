@@ -1,15 +1,19 @@
-import javax.swing.text.AttributeSet;
+package data;
+
+import utility.ArraySet;
+
+import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
 /**
- * Classe Data modella l'insieme di transazioni (o tuple)
+ * Classe data.Data modella l'insieme di transazioni (o tuple, o esempi)
  */
-class Data {
+public class Data {
 	/**
-	 * matrice nXm in cui ogni riga modella una transazione
+	 * matrice nXm in cui ogni riga modella una transazione, ogni colonna un attributo
 	 */
 	private Object data [][];
 	/**
@@ -20,23 +24,27 @@ class Data {
 	 * vettore degli attributi in ciascuna tupla (schema della tabella di dati)
 	 */
 	private Attribute attributeSet[];
+	/**
+	 * numero di tuple distinte in data
+	 */
+	private int distinctTuples;
 
 	/**
 	 * Costruttore di classe:
 	 * <p><ul>
-		 * <li> Inizializza la matrice data [ ][ ] con transazioni di esempio (14 esempi e 5 attributi al momento)
-		 * <li> Inizializza attributeSet creando cinque oggetti di tipo DiscreteAttribute
-		 * <li> Inizializza numberOfExamples
+	 * <li> Inizializza la matrice data [ ][ ] con transazioni di esempio (14 esempi e 5 attributi al momento)
+	 * <li> Inizializza attributeSet creando cinque oggetti di tipo data.DiscreteAttribute
+	 * <li> Inizializza numberOfExamples
+	 * <li> Inizializza il numero di tuple distinte distinctTuples</li>
 	 * </ul><p>
-	 *
 	 */
-	Data(){
+	public Data(){
 		
 		//data
 		
 		data = new Object [14][5];
 
-		data[0][0]=new String ("sunny");
+		/*data[0][0]=new String ("sunny");
 		data[1][0]=new String ("sunny");
 		data[2][0]=new String ("sunny");
 		data[3][0]=new String ("rain");
@@ -111,9 +119,9 @@ class Data {
 		data[10][4]=new String ("yes");
 		data[11][4]=new String ("yes");
 		data[12][4]=new String ("yes");
-		data[13][4]=new String ("yes");
+		data[13][4]=new String ("yes");*/
 
-		/*data[0][0]=new String ("sunny");
+		data[0][0]=new String ("sunny");
 		data[1][0]=new String ("sunny");
 		data[2][0]=new String ("overcast");
 		data[3][0]=new String ("rain");
@@ -188,12 +196,12 @@ class Data {
 		data[10][4]=new String ("yes");
 		data[11][4]=new String ("yes");
 		data[12][4]=new String ("yes");
-		data[13][4]=new String ("no");*/
+		data[13][4]=new String ("no");
 		
 		
 		// numberOfExamples
 		
-		 numberOfExamples=14;		 
+		 numberOfExamples=14;
 		 
 		
 		//explanatory Set
@@ -227,19 +235,22 @@ class Data {
 		playTennisValues[1]="yes";
 		attributeSet[4] = new DiscreteAttribute("PlayTennis",4, playTennisValues);
 
+		//inizializza il numero di tuple distinte
+		distinctTuples = countDistinctTuples();
+
 	}
 
 	/**
 	 * @return cardinalità dell'insieme di transazioni
 	 */
-	int getNumberOfExamples(){
+	public int getNumberOfExamples(){
 		return numberOfExamples;
 	}
 
 	/**
 	 * @return cardinalità dell'insieme degli attributi
 	 */
-	int getNumberOfAttributes(){
+	public int getNumberOfAttributes(){
 		return attributeSet.length;
 	}
 
@@ -251,28 +262,27 @@ class Data {
 	}
 
 	/**
-	 *
 	 * @param exampleIndex indice di riga della matrice data
 	 * @param attributeIndex indice di colonna della matrice data
-	 * @return valore assunto in data dall'attributo in posizione attributeIndex, nella riga in
-	 * posizione exampleIndex
+	 * @return valore assunto, in data, dall'attributo in posizione attributeIndex,
+	 * nella riga in posizione exampleIndex.
+	 *
 	 */
-	Object getAttributeValue(int exampleIndex, int attributeIndex){
+	public Object getAttributeValue(int exampleIndex, int attributeIndex){
 		return data[exampleIndex][attributeIndex];
 	}
 
 	/**
-	 *
 	 * @param index indice di posizione in attributeSet
-	 * @return restituisce i valori degli attributi nella tupla di posizione index
+	 * @return restituisce l'attributo in posizione index in attributeSet
 	 */
 	Attribute getAttribute(int index){
 		return attributeSet[index];
 	}
 
 	/**
-	 * Crea una stringa in cui memorizza lo schema della tabella (vedi
-	 * attributeSet) e le transazioni memorizzate in data, opportunamente enumerate.
+	 * Crea una stringa in cui memorizza lo schema della tabella (attributeSet)
+	 * e le transazioni memorizzate in data, opportunamente enumerate.
 	 * @return restuisce la stringa che modella lo stato dell'oggetto
 	 */
 	public String toString(){
@@ -290,11 +300,12 @@ class Data {
 	}
 
 	/**
-	 * Crea un oggetto di tipo Tuple che modella come sequenza di coppie Attributo-Valore la i-esima riga in data
 	 * @param index indice di riga
-	 * @return retituisce l'oggetto di Tuple creato
+	 * @return Un oggetto di tipo data.Tuple che modella la riga index in data
+	 * 	 come una sequenza di coppie Attributo-ValoreAssunto
+	 * 	 <li>e.g.: <pre>Outlook="sunny", Temperature="hot", Humidity="high", Wind="weak", PlayTennis="no"</pre> </li>
 	 */
-	Tuple getItemSet(int index){
+	public Tuple getItemSet(int index){
 		Tuple tuple = new Tuple(attributeSet.length);
 		for(int i = 0; i < attributeSet.length; i++)
 			tuple.add(new DiscreteItem(attributeSet[i], (String)data[index][i]),i);
@@ -302,12 +313,18 @@ class Data {
 	}
 
 	/**
-	 * Sceglie in maniera casuale i primi semi (centroidi) da utilizzare per la definizione dei cluster
+	 * Sceglie randomicamente i semi (centroidi) da utilizzare per la definizione dei cluster
+	 *
 	 * @param k numero di cluster da generare
-	 * @return array, di k interi rappresentanti gli indici di riga in data per le
-	 * tuple inizialmente scelte come centroidi (passo 1 del k-means)
+	 * @return array di k interi rappresentanti gli indici di riga in data per le
+	 * tuple scelte come centroidi (passo 1 del k-means)
+	 * @throws OutOfRangeSampleSize se k è maggiore rispetto al numero di centroidi generabili, oppure è <= 0
 	 */
-	int[] sampling(int k){
+	public int[] sampling(int k) throws OutOfRangeSampleSize{
+		if (k <= 0 || k > distinctTuples){
+			throw new OutOfRangeSampleSize("Numero di cluster k maggiore " +
+					"rispetto al numero di centroidi generabili");
+		}
 		int centroidIndexes[]=new int[k];
 		//choose k random different centroids in data.
 		Random rand=new Random();
@@ -333,13 +350,14 @@ class Data {
 	}
 
 	/**
-	 * Confronta due righe di Data, ovvero due transazioni
-	 * @param i indice di riga nell'insieme in Data
-	 * @param j indice di riga nell'insieme in Data
+	 * Confronta due righe di data.Data, ovvero due transazioni
+	 * @param i indice di riga nell'insieme in data.Data
+	 * @param j indice di riga nell'insieme in data.Data
 	 * @return Vero se due righe contengono gli stessi valori, falso altrimenti
 	 */
 	private boolean compare(int i, int j){
-		Tuple t1 = getItemSet(i), t2 = getItemSet(j);
+		Tuple t1 = getItemSet(i);
+		Tuple t2 = getItemSet(j);
 		for (int k = 0; k < t1.getLength(); k++)
 			if (!t1.get(k).equals(t2.get(k)))
 				return false;
@@ -347,49 +365,76 @@ class Data {
 	}
 
 	/**
-	 * Calcola il centroide rispetto all'attributo in input, dato un insieme di indici di riga
+	 *
+	 * Calcola il centroide (prototipo) rispetto all'attributo in input sulle righe
+	 * il cui indice è in idList
 	 *
 	 * @param idList insieme di indici di riga da considerare
 	 * @param attribute attributo su cui calcolare il centroide
-	 * @return valore del centroide rispetto al parametro attribute
+	 * @return valore del centroide rispetto al parametro attribute calcolato per le rgihe in idList
 	 */
 	Object computePrototype(ArraySet idList, Attribute attribute){
-		if (attribute instanceof ContinuousAttribute)
-			return computePrototype(idList, (ContinuousAttribute) attribute);
-		else
+		if (attribute instanceof ContinuousAttribute) {
+			// non è necessario fare il cast esplicito ContinuousAttribute attribute
+			// poichè sappiamo già il tipo se instanceof restituisce true
+			return computePrototype(idList, attribute);
+		}
+		else {
 			return computePrototype(idList, (DiscreteAttribute) attribute);
+		}
 	}
 
 	/**
-	 * Determina il valore che occorre più frequentemente per un DiscreteAttribute nel sottoinsieme di dati individuato da idList
+	 * Determina il valore che occorre più frequentemente per un data.DiscreteAttribute nel sottoinsieme di dati individuato da idList
 	 *
 	 * @param idList insieme degli indici delle righe di data appartenenti ad un cluster
-	 * @param attribute DiscreteAttribute su cui calcolare il centroide
+	 * @param attribute data.DiscreteAttribute su cui calcolare il centroide
 	 * @return valore del centroide rispetto al parametro discreto attribute
 	 */
-	String computePrototype(ArraySet idList, DiscreteAttribute attribute){
+	private String computePrototype(ArraySet idList, DiscreteAttribute attribute){	//messo privato perchè viene chiamato da Object computePrototype
 		// HashMap che avrà come chiavi i valori dell'attributo discreto,
-		// e come valore le occorrenze di quell'attributo nelle tuple facenti parte del cluster indicate da idList
+		// e come valore le occorrenze di quell'attributo nelle tuple facenti parte del cluster indicato da idList
 		Map<String, Integer> mapFreq = new HashMap<>();
 		for (int i = 0; i < attribute.getNumberOfDistinctValues(); i++){
 			mapFreq.put(attribute.getValue(i),attribute.frequency(this, idList, attribute.getValue(i)));
 		}
-		// Per trovare la chiave con valore massimo utilizzo la funzione max di collections che permette di trovare
-		// il valore massimo in una collection usando un comparator come criterio di comparazione
-		// poiché hashMap non è una collection ci serviamo della funzione entrySet che restituisce un insieme delle coppie
-		// presenti in hashMap.
-		// Max restituisce un oggetto dello stesso tipo della collection su cui lavora,
-		// in questo caso Map.Entry<String, Integer>, ovvero una coppia <String, Integer> facente parte di un entrySet
+		/*
+		 Per trovare la chiave con valore massimo utilizzo la funzione max di collections che permette di trovare
+		 il valore massimo in una collection usando un comparator come criterio di comparazione
+		 poiché hashMap non è una collection ci serviamo della funzione entrySet che restituisce un insieme delle coppie
+		 presenti in hashMap. Max restituisce un oggetto dello stesso tipo della collection su cui lavora,
+		 in questo caso Map.Entry<String, Integer>, ovvero una coppia <String, Integer> facente parte di un entrySet
+		*/
 		Map.Entry<String, Integer> maxEntry = Collections.max(mapFreq.entrySet(), Map.Entry.comparingByValue());
 		return maxEntry.getKey();
+	}
+
+	/**
+	 * Conta il numero di transazioni distinte memorizzate in data
+	 * @return numero di transazioni distinte memorizzate in data
+	 */
+	private int countDistinctTuples(){
+		int countDistinc = 0;
+		for (int i = 0; i < data.length; i++) {
+			boolean bDistinct = true;
+			for (int j = i + 1; j < data.length; j++) {
+				if (compare(i, j)) {
+					bDistinct = false;
+					break;
+				}
+			}
+			if (bDistinct) {
+				countDistinc++;
+			}
+		}
+		return countDistinc;
 	}
 
 	
 	public static void main(String args[]){
 		Data trainingSet=new Data();
 		System.out.println(trainingSet);
-		
-		
+		System.out.println(trainingSet.countDistinctTuples());
+		System.out.println(trainingSet.compare(0,1));
 	}
-
 }
