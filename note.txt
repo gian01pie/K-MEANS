@@ -1,0 +1,127 @@
+Dati:
+- Collezione D di transazioni
+    - Ogni transazione è un vettore di coppie attributo-valore (item)
+- Intero K (indica il numero di cluster da generare)
+
+Scopo:
+- Partizionare la collezione di transazioni D in K insiemi di transazioni D1,...,Dk tali che:
+    - Di è un segmento (selezione) omogenea di D
+    - D = Unione di tutte le Di (con i che va da 1 a k) AND Di INTERSEZIONE Dj = INSIEME VUOTO
+        - Cioè l'insieme di partenza è dato dall'unione di tutti questi segmenti (cluster)
+        - Ognuno di questi segmenti intersecato con un altro da insieme vuoto, ovvero ogni elemento appartiene ad un solo cluster
+
+L'algoritmo KMEANS serve ad eseguire il clustering, ovvero il raggruppamento dei dati in cluster
+
+Per rappresentare un cluster si calcola e memorizza il centroide del cluster
+- si sceglie un elemento che sia rappresentativo del cluster, l'elemento è quello centrale (centroide)
+
+Per utilizzare i cluster: minimizzo la distranza tra  una transazione nuova ed il centroide del cluster (rappresentazione del cluster
+per scoprire il cluster di appartenenza
+- Ho i miei cluster pronti, arriva una nuova transazione, devo metterla in un cluster, quale ? calcolo la distanza tra
+questa nuova transazione e i centroidi degli altri cluster. Il cluster per cui la distanza sarà più piccola è il cluster a cui
+sarà assegnata la nuova transazione
+- La distanza è una sorta di misura di similarità, più la distanza è bassa più i due elementi sono simili
+
+PSEUDOCODICE DEL KMEANS
+```
+Kmeans(D,k)-:clusterSet
+    clusterSet: insieme di k segmenti Di : ogni segmento Di è un insieme di transazioni in D
+
+begin
+    1. inizializza clusterSet con segmenti inizialmente vuoti
+    2. assegna a ciascun segmento di clusterSet una transazione casualmente scelta da D
+        // scelgo un segmento a caso dai dati e lo metto in D1, poi ne prendo un'altro e lo metto in D2...
+        // ATTENZIONE: i segmenti seclti devono essere diversi
+    3. do
+        for(transazione : D)
+            3.1 Di = cluster(clusterSet,transazione)
+            3.2 sposta transazione nel segmento Di
+            3.3 ricalcola I semi dei cluster come centroidi dei cluster
+       while (almeno una transazione cambia cluster)
+       // il ciclo while continua fino a quando c'è una transizione che cambia cluster, altrimenti termina
+       // per evitare cicli infiniti si setta un limite massimo di iterazioni
+    4. return clusterSet;
+end
+```
+
+ANDIAMO nel dettaglio
+
+PASSO 1
+    inizializzo i k segmenti che saranno degli insiemi vuoti: facciamo per k = 2
+    clusterSet = {D1,D2}
+    D1 = {}
+    D2 = {}
+
+PASSO 2
+    Inizializzo i centroidi !
+    Scelgo k transazioni (che rappresentano i centroidi) casualmente e ne inserisco una per segmento
+    Queste transazioni vengono chiamati SEMI
+    clusterSet = {D1,D2}
+    c1 = (0.9,1.2)
+    c2 = (2,2.2)
+    D1 = D1 U c1
+    D2 = D2 U c2
+
+PASSO 3
+    Assegno ciascuna delle altre transizioni al proprio cluster di appartenenza
+    L'appartenenza ad un cluster dipende dalla distanza della transizione dal centroide di quel cluster
+        Per ogni transazione calcolo la distanza dai centroidi di ogni cluster
+        La transazione apparterrà al cluster che minimizza tale distanza
+    Prendiamo la transizione  t = (0.9,1)
+        DistanzaEuclidea(t,c1) = 0.2
+        DistanzaEuclidea(t,c2) = 1.62
+    quindi t lo inseriamo nel cluster che ha c1 come centroide quindi D1
+    E si fa questo per tutte le transazioni...
+    Otteniamo:
+       D1={1,2,5,8}
+       D2={3,4,6,7,9,10,11,12,1314,15,16,17}
+    NOTA: al posto di scrivere effettivamente le coppie per far prima ho scritto le posizioni nella tabella
+
+PASSO 4
+    Ricalcolo i centroidi dei cluster
+    Il centroide adesso diventa una transazione fittizia data dalla media dei valori di X1 e X2
+    il nuovo c1:
+        c1 = (1.65,1.05)
+            questi valori sono dati da:
+                La media dei valori di X1 nel cluster di cui c1 è centroide: (0.9 + 0.9 + 1.9 + 2.9) / 4 = 1.65
+                La media dei valori di X2 nel cluster di cui c1 è centroide: (1 + 1.2 + 1 + 1) / 4 = 1.05
+    allo stesso modo c2:
+        c2 = (8.03,4.66)
+
+PASSO 5
+    Il centroide dopo il calcolo della media è cambiato dal precedente? cioè i semi sono cambiati ?
+    Se si, si ripete dal passo 3 (ovvero il ciclo for)
+        Quindi assegno ogni transazione al cluster più vicino e ottengo
+            D1 = {1,2,3,4,5,6,7,8,9}
+            D2 = {10,11,12,13,14,15,16,17}
+        Passo 4: calcolo i centroidi dei nuovi cluster
+            c1= (1.76,1.98)
+            c2=(11.9, 5.875)
+        PASSO 5: I semi sono nuovamente cambiati quindi ripeto dal passo 3
+        Passo3:
+           D1 = {1,2,3,4,5,6,7,8,9}
+           D2 = {10,11,12,13,14,15,16,17}
+        Passo4: calcolo i centroidi
+             c1= (1.76,1.98)
+             c2=(11.9, 5.875)
+        Passo5: questa volta i semi non sono cambiati, esco fuori dal do-while
+
+CALCOLO DEL CENTROIDE
+    Se il centroide è u attributo numerico:
+        è dato dalla sommatoria dei valori dell'attirbuto diviso la cardinalità del cluster (una sorta di media)
+    Se è un attributo categorico
+        si prende quello la cui frequenza è massima (la categoria che compare di più, la moda sostanzialmente)
+
+
+
+ArrayList mi indica le posizioni di quali tuple appartengono al cluster
+DATA
+|X1|X2|
+|--|-----|
+|12|gino|
+|15|pino|
+....
+ArrayList è la rappresentazione tramite vettore booleano di quali posizioni fanno parte del cluster di riferimento
+- chiaramente le posizioni settate a true saranno quelle che appartengono
+ArrayList idList = [false,true,false,true,true ]
+- questo esempio indica che le transazioni in posizione 1,3,4 di DATA appartengono al cluster di riferimento

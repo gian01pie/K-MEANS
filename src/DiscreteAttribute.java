@@ -36,5 +36,23 @@ class DiscreteAttribute extends Attribute {
     public String getValue(int i){
         return values[i];
     }
+
+    /**
+     * Determina il numero di volte che il valore v compare in corrispondenza dell'attributo corrente (indice di colonna) negli
+     * esempi memorizzati in data e indicizzati (per riga) da idList
+     * @param data dataset su cui contare le occorrenze
+     * @param idList l'insieme degli indici di riga di alcune tuple memorizzate in data sul quale contare le occorrenze
+     * @param v valore discreto di cui contare le occorrenze
+     * @return numero di occorenze di v nell'insieme di esempi idList rispetto all'attributo corrente
+     */
+    int frequency(Data data, ArraySet idList, String v) {
+        int count = 0;
+        for (int i = 0; i < idList.toArray().length; i++){
+            if (data.getAttributeValue(i, this.getIndex()).equals(v)){
+                count++;
+            }
+        }
+        return count;
+    }
     
 }
