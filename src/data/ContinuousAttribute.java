@@ -1,5 +1,7 @@
+package data;
+
 /**
- * Classe concreta ContinuousAttribute (estende Attribute)
+ * Classe concreta data.ContinuousAttribute (estende data.Attribute)
  * che modella un attributo continuo (numerico).
  * Include i metodi per la “normalizzazione”
  * del dominio dell'attributo nell'intervallo [0,1] al fine di rendere
@@ -24,7 +26,7 @@ class ContinuousAttribute extends Attribute {
      * @param min valore di dominio minimo
      * @param max valore di dominio massimo
      */
-    public ContinuousAttribute(String name, int index, double min, double max) {
+    ContinuousAttribute(String name, int index, double min, double max) {
         super(name, index);
         this.min = min;
         this.max = max;
@@ -39,8 +41,21 @@ class ContinuousAttribute extends Attribute {
      * @param v valore da normalizzare
      * @return valore normalizzato
      */
-    public double getScaledValue(double v) {
-        return (v - min) / (max - min);
+    double getScaledValue(double v) {
+        return ((v - min) / (max - min));
+    }
+
+
+
+    // @TODO rimuovere funzione di TEST
+    public static void main(String args[]){
+        ContinuousAttribute conAtt = new ContinuousAttribute("Da 0 a 10", 0, 1, 10);
+        System.out.println("Test funzioni:");
+        System.out.println("getName:" + conAtt.getName());
+        System.out.println("getIndex:" + conAtt.getIndex());
+        System.out.println("toString:" + conAtt);
+        //Ovviamente devo metter un valore di v: min<=v<=max
+        System.out.println("getScaledValue:" + conAtt.getScaledValue(5));
     }
 
 }

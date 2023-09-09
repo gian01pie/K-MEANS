@@ -1,9 +1,14 @@
+package mining;
+
+import data.Data;
+import data.OutOfRangeSampleSize;
+
 /**
- * Classe KMeansMiner che implementa l'algoritmo K-Means
+ * Classe mining.KMeansMiner che implementa l'algoritmo K-Means
  */
-class KMeansMiner {
+public class KMeansMiner {
     /**
-     * Insieme dei cluster
+     * Insieme dei cluster individuati dal K-Means
      */
     private ClusterSet C;
 
@@ -11,14 +16,14 @@ class KMeansMiner {
      * Crea l'insieme di cluster riferito da C
      * @param k numero di cluster da generare
      */
-    KMeansMiner(int k){
+    public KMeansMiner(int k){
         C = new ClusterSet(k);
     }
 
     /**
      * @return restituisce l'insieme dei cluster C
      */
-    ClusterSet getC(){
+    public ClusterSet getC(){
         return C;
     }
 
@@ -30,15 +35,15 @@ class KMeansMiner {
      *   <li>Assegnazione di ciascuna riga della matrice in data al cluster avente
      * centroide più vicino all'esempio;</li>
      *   <li>Calcolo dei nuovi centroidi per ciascun cluster;</li>
-     *   <li>Ripete i passi 2 e 3. finché due iterazioni consecuitive non restituiscono
+     *   <li>Ripete i passi 2 e 3 finché due iterazioni consecuitive non restituiscono
      * centroidi uguali.</li>
      * </ol>
      * </p>
      *
-     * @param data insieme delle transazione
+     * @param data insieme delle transazioni
      * @return numero di iterazioni eseguite
      */
-    int kmeans(Data data){
+    public int kmeans(Data data) throws OutOfRangeSampleSize {
         int numberOfIterations=0;
         //STEP 1
         C.initializeCentroids(data);

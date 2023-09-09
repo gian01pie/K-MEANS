@@ -1,7 +1,13 @@
+package mining;
+
+import data.Data;
+import data.OutOfRangeSampleSize;
+import data.Tuple;
+
 /**
- * Classe ClusterSet che rappresenta un insieme di cluster (determinati tramite il K-means)
+ * Classe mining.ClusterSet che rappresenta un insieme di cluster (determinati tramite il K-means)
  */
-class ClusterSet {
+public class ClusterSet {
     private Cluster C[];
     /**
      * Posizione valida per la memorizzazione di un nuovo cluster in C
@@ -12,7 +18,7 @@ class ClusterSet {
      * Costruttore di classe che crea l'oggetto riferito da C
      * @param k numero di cluster da generare
      */
-    ClusterSet(int k){
+    public ClusterSet(int k){
         C = new Cluster[k];
     }
 
@@ -20,16 +26,16 @@ class ClusterSet {
      * Inserisce il cluster c nella posizione i
      * @param c cluster da inserire
      */
-    void add(Cluster c){
+    public void add(Cluster c){
         C[i] = c;
         i++;
     }
 
     /**
      * @param i posizione all'interno dell'insieme di cluster C
-     * @return Cluster in posizione i
+     * @return mining.Cluster in posizione i
      */
-    Cluster get(int i){
+    public Cluster get(int i){
         return C[i];
     }
 
@@ -38,27 +44,27 @@ class ClusterSet {
      * nell'insieme dei cluster C
      * @param data insieme delle tuple
      */
-    void initializeCentroids(Data data){
+    public void initializeCentroids(Data data) throws OutOfRangeSampleSize {
         // array che contiene gli indici di riga delle tuple scelte come centroidi
-        int centroidIndexes[]=data.sampling(C.length);
-        for(int i=0;i<centroidIndexes.length;i++)
-        {
+        int centroidIndexes[] = data.sampling(C.length);
+        for (int i = 0; i < centroidIndexes.length; i++) {
             // memorizza la tupla (che è un centroide in questo caso) di indice i
             Tuple centroidI = data.getItemSet(centroidIndexes[i]);
-            // aggiunge il cluster cenerato dal centroide scelto nell'insieme dei cluster
+            // aggiunge il cluster, individuato dal centroide scelto, nell'insieme dei cluster
             add(new Cluster(centroidI));
         }
     }
 
     /**
      * Calcola la distanza tra la tupla in input ed il centroide di ciascun cluster nell'insieme C.
-     * Restituisce il cluster più vicino
+     * Restituisce il cluster più vicino alla tupla
      * @param tuple tupla di cui calcolare il cluster più vicino
-     * @return cluster più vicino alla tupla passata in input
+     * @return cluster il cui centroide è più vicino alla tupla passata in input
      */
-    Cluster nearestCluster(Tuple tuple){
-        // suppongo che il primo cluster nell'insieme sia il minimo
+    public Cluster nearestCluster(Tuple tuple){
+        // suppongo che il primo cluster nell'insieme sia il più vicino
         Cluster nearestC = C[0];
+        // il ciclo parte da 1 perchè l'indice 0 è quello che ho assunto come minimo
         for (int i = 1; i < C.length; i++){
             // se il cluster successivo ha una distanza minore dalla tupla rispetto al cluster precedente
             // aggiorno il valore di nearestC al cluster più vicino
@@ -70,11 +76,11 @@ class ClusterSet {
     }
 
     /**
-     * Restituisce il cluster che contenente la transazione di indice i
+     * Restituisce il cluster contenente la transazione di indice i
      * @param id indice della transazione
      * @return cluster contenente la transazione, null se la transazione non appartiena ad alcun cluster
      */
-    Cluster currentCluster(int id){
+    public Cluster currentCluster(int id){
         for (int i = 0; i < C.length; i++){
             if (C[i].contain(id)){
                 return C[i];
@@ -85,9 +91,9 @@ class ClusterSet {
 
     /**
      * Calcola il nuovo centroide per ciascun cluster in C
-     * @param data
+     * @param data insieme di transazioni
      */
-    void updateCentroids(Data data){
+    public void updateCentroids(Data data){
         for (int i = 0; i < C.length; i++) {
             C[i].computeCentroid(data);
         }
