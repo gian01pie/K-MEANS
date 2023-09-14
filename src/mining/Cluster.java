@@ -1,7 +1,9 @@
 package mining;
 
 import data.*;
-import utility.ArraySet;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe mining.Cluster che modella un Cluster ovvero un raggruppamento di data.Item
@@ -14,7 +16,7 @@ class Cluster {
 	/**
 	 * insieme degli indici degli elementi che appartengono al cluster
 	 */
-	private ArraySet clusteredData;
+	private Set<Integer> clusteredData;
 
 	/**
 	 * Costruttore che inizializza il centroide con il parametro in input e crea l'oggetto clusteredData
@@ -22,7 +24,7 @@ class Cluster {
 	 */
 	Cluster(Tuple centroid){
 		this.centroid = centroid;
-		this.clusteredData = new ArraySet();
+		this.clusteredData = new HashSet<Integer>();
 		
 	}
 
@@ -62,7 +64,7 @@ class Cluster {
 	 * @return True se la transazione appartiene al cluster, false altrimenti
 	 */
 	boolean contain(int id){
-		return clusteredData.get(id);
+		return clusteredData.contains(id);
 	}
 	
 
@@ -73,7 +75,7 @@ class Cluster {
 	 * @param id indice di posizione della transazione nel dataset
 	 */
 	void removeTuple(int id){
-		clusteredData.delete(id);
+		clusteredData.remove(id);
 	}
 
 	@Override
@@ -86,20 +88,19 @@ class Cluster {
 		
 	}
 
-	
-	public String toString(Data data){
-		String str="Centroid=(";
-		for(int i=0;i<centroid.getLength();i++)
-			str+=centroid.get(i)+ " ";
-		str+=")\nExamples:\n";
-		int array[]=clusteredData.toArray();
-		for(int i=0;i<array.length;i++){
-			str+="[";
-			for(int j=0;j<data.getNumberOfAttributes();j++)
-				str+=data.getAttributeValue(array[i], j)+" ";
-			str+="] dist="+getCentroid().getDistance(data.getItemSet(array[i]))+"\n";
+
+	public String toString(Data data) {
+		String str = "Centroid=(";
+		for (int i = 0; i < centroid.getLength(); i++)
+			str += centroid.get(i) + " ";
+		str += ")\nExamples:\n";
+		for (int i : clusteredData) {
+			str += "[";
+			for (int j = 0; j < data.getNumberOfAttributes(); j++)
+				str += data.getAttributeValue((Integer) i, j) + " ";
+			str += "] dist=" + getCentroid().getDistance(data.getItemSet(i)) + "\n";
 		}
-		str+="\nAvgDistance="+getCentroid().avgDistance(data, array);
+		str += "AvgDistance=" + getCentroid().avgDistance(data, clusteredData) + "\n";
 		return str;
 	}
 
