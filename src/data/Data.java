@@ -495,12 +495,17 @@ public class Data {
 
 		@Override
 		public String toString() {
-			String str = "Example{";
+			StringBuilder str = new StringBuilder("Example{");
+			int count = 0;
 			for (Object obj : example){
-				str += obj.toString() + ", ";
+				str.append(obj.toString());
+				count++;
+				if (count < example.size()){
+					str.append(", ");
+				}
 			}
-			str += "}" ;
-			return  str;
+			str.append("}") ;
+			return  str.toString();
 		}
 	}
 

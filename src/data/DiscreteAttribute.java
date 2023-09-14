@@ -37,16 +37,6 @@ class DiscreteAttribute extends Attribute implements Iterable<String> {
         return values.size();
     }
 
-//    /**
-//     * @param i posizione di un valore in values
-//     * @return restituisce il valore in posizione i di values (values[i])
-//     * @Deprecated
-//     */
-//    @Deprecated
-//    String getValue(int i){
-//        return values[i];
-//    }
-
     /**
      * Conta le occorrenze di v, nell'ambito dell'attributo corrente
      * (ovvero nella colonna di data che ha per indice quello dell'attributo corrente),
@@ -60,8 +50,7 @@ class DiscreteAttribute extends Attribute implements Iterable<String> {
     int frequency(Data data, Set<Integer> idList, String v) {
         int count = 0;
         for (Integer i : idList){
-            //Se il valore assunto dall'attributo in data in posizione:
-            // - riga: individuata dall'i-esima posizione
+            //Se il valore assunto dall'attributo nella transazione di indice i è = a v conta l'occorrenza
             if (data.getAttributeValue(i, this.getIndex()).equals(v)){
                 count++;
             }
@@ -105,6 +94,6 @@ class DiscreteAttribute extends Attribute implements Iterable<String> {
         idList.add(4);
         System.out.println(d);
         // calcolo la frequenza del valore "sunny" per le tuple di indice individuato da idList
-        System.out.println(att.frequency(d,idList,"sunny"));
+        System.out.println(att.frequency(d,idList,"overcast"));
     }
 }

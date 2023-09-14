@@ -129,7 +129,7 @@ public class Tuple {
         System.out.println(d);
         System.out.println("clusteredData:");
         for (Integer i : cs){
-            System.out.println(cs.toArray()[i]);
+            System.out.println(i);
         }
         System.out.println("t2:" + t2);
         System.out.println("t2.avgDistance: " + t2.avgDistance(d,cs));

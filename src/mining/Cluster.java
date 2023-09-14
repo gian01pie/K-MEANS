@@ -103,5 +103,4 @@ class Cluster {
 		str += "AvgDistance=" + getCentroid().avgDistance(data, clusteredData) + "\n";
 		return str;
 	}
-
 }
