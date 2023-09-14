@@ -1,6 +1,6 @@
 package data;
 
-import utility.ArraySet;
+import java.util.Set;
 
 /**
  * Classe astratta data.Item che modella un generico item (coppia attributo-valore) (e.g. Outlook=”Sunny”)
@@ -61,7 +61,7 @@ public abstract class Item {
      * @param clusteredData l'insieme degli indici delle righe in data che formano il cluster,
      *                     ovvero gli indici delle transazioni appartenenti al cluster in considerazione
      */
-    public void update(Data data, ArraySet clusteredData){
+    public void update(Data data, Set<Integer> clusteredData){
         value = data.computePrototype(clusteredData, attribute);
     }
 

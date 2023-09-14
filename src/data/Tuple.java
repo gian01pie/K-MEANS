@@ -1,6 +1,7 @@
 package data;
 
-import utility.ArraySet;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Classe data.Tuple che modella una tupla come sequenza di coppie attributo-valore
@@ -65,14 +66,14 @@ public class Tuple {
      * @param clusteredData insieme di tuple (indici di riga di data) delle quali calcolare la distanza
      * @return media delle distanze da data a ciascuna tupla indicizzata da clusteredData
      */
-    public double avgDistance(Data data, int clusteredData[]){
+    public double avgDistance(Data data, Set<Integer> clusteredData){
         double p = 0.0;
         double sumD = 0.0;
-        for (int i=0; i < clusteredData.length; i++ ) {
-            double d = getDistance(data.getItemSet(clusteredData[i]));
+        for (Integer i : clusteredData) {
+            double d = getDistance(data.getItemSet(i));
             sumD += d;
         }
-        p = sumD/clusteredData.length;
+        p = sumD/clusteredData.size();
         return p;
     }
 
@@ -118,7 +119,7 @@ public class Tuple {
         System.out.println("getDistance: " + t.getDistance(t1));
         //avg Distance
         Data d = new Data();
-        ArraySet cs = new ArraySet();
+        Set<Integer> cs = new HashSet<>();
         cs.add(0);
         cs.add(1);
         cs.add(3);
@@ -127,10 +128,10 @@ public class Tuple {
         System.out.println("Data:");
         System.out.println(d);
         System.out.println("clusteredData:");
-        for (int i = 0; i < cs.toArray().length; i++){
-            System.out.println(cs.toArray()[i]);
+        for (Integer i : cs){
+            System.out.println(i);
         }
         System.out.println("t2:" + t2);
-        System.out.println("t2.avgDistance: " + t2.avgDistance(d,cs.toArray()));
+        System.out.println("t2.avgDistance: " + t2.avgDistance(d,cs));
     }
 }

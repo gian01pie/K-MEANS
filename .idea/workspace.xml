@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 2 terminato&#10;- Ricorda questione in put con Data comentato">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/keyboardinput/Keyboard.java" afterDir="false" />
+    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ArraySet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utility/ArraySet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Attribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/Cluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ClusterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/ClusterSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ContinuousAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ContinuousAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DiscreteItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KMeansMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/KMeansMiner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lab2" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -138,8 +124,8 @@
         <item itemvalue="Application.MainTest" />
         <item itemvalue="Application.Tuple" />
         <item itemvalue="Application.DiscreteItem" />
-        <item itemvalue="Application.Data" />
         <item itemvalue="Application.DiscreteAttribute" />
+        <item itemvalue="Application.Data" />
       </list>
     </recent_temporary>
   </component>
@@ -172,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694177488008</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each">
+      <created>1694714652929</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1694714652929</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +185,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="LAB 1 terminato" />
     <MESSAGE value="LAB 2 terminato&#10;- Ricorda questione in put con Data comentato" />
-    <option name="LAST_COMMIT_MESSAGE" value="LAB 2 terminato&#10;- Ricorda questione in put con Data comentato" />
+    <MESSAGE value="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each" />
+    <option name="LAST_COMMIT_MESSAGE" value="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="example.get(0)" />
+        <watch expression="temp" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

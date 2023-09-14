@@ -49,13 +49,13 @@ class ContinuousAttribute extends Attribute {
 
     // @TODO rimuovere funzione di TEST
     public static void main(String args[]){
-        ContinuousAttribute conAtt = new ContinuousAttribute("Da 0 a 10", 0, 1, 10);
+        ContinuousAttribute conAtt = new ContinuousAttribute("Da 0 a 10", 0, 1, 5);
         System.out.println("Test funzioni:");
         System.out.println("getName:" + conAtt.getName());
         System.out.println("getIndex:" + conAtt.getIndex());
         System.out.println("toString:" + conAtt);
         //Ovviamente devo metter un valore di v: min<=v<=max
-        System.out.println("getScaledValue:" + conAtt.getScaledValue(5));
+        System.out.println("getScaledValue:" + conAtt.getScaledValue(4));
     }
 
 }
