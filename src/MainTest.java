@@ -12,7 +12,7 @@ public class MainTest {
      * @param args
      */
     public static void main(String[] args) {
-        Data data = new Data();
+        Data data = new Data("MapDB");
         System.out.println(data);
         KMeansMiner kmeans = null;
 

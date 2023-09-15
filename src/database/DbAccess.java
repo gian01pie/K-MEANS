@@ -91,7 +91,7 @@ public class DbAccess {
      * Chiude la connessione
      * @throws SQLException se c'è un errore nell'accesso al DB
      */
-    void closeConnection () throws SQLException {
+    public void closeConnection () throws SQLException {
         conn.close();
     }
 

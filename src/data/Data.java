@@ -1,7 +1,9 @@
 package data;
 
+import java.sql.SQLException;
 import java.util.*;
-import database.Example;
+
+import database.*;
 
 /**
  * Classe data.Data modella l'insieme di transazioni (o tuple, o esempi)
@@ -12,7 +14,7 @@ public class Data {
 	 */
 	private List<Example> data;
 	/**
-	 * cardinalità dell'insieme di transazioni (i.e. numero di esempi in data)
+	 * Cardinalità dell'insieme di transazioni (i.e. numero di esempi in data)
 	 */
 	private int numberOfExamples;
 	/**
@@ -25,7 +27,53 @@ public class Data {
 	 * @param table nome della tabella nel DB
 	 */
 	public Data (String table) {
+		// Avvio la connesione
+		DbAccess db = new DbAccess();
+		try {
+			db.initConnection();
+		} catch (DatabaseConnectionException e){
+			e.getMessage();
+		}
 
+		// Recupero la tabella dal database
+		TableData tbData = new TableData(db);
+		TableSchema tbSchema = null;
+		try {
+			data = tbData.getDistinctTransazioni(table);
+			tbSchema = new TableSchema(db, table);
+		} catch (EmptySetException | SQLException e){
+			e.getMessage();
+		}
+
+		// numberOfExamples
+		numberOfExamples = data.size();
+
+		//attributeSet
+		attributeSet = new LinkedList<Attribute>();
+
+		for (int i = 0; i < tbSchema.getNumberOfAttributes(); i++){
+			if (tbSchema.getColumn(i).isNumber()){
+				try {
+					double min = (double) tbData.getAggregateColumnValue(table, tbSchema.getColumn(i), QUERY_TYPE.MIN);
+					double max = (double) tbData.getAggregateColumnValue(table, tbSchema.getColumn(i), QUERY_TYPE.MAX);
+					attributeSet.add(new ContinuousAttribute(tbSchema.getColumn(i).getColumnName(), i, min, max));
+				} catch (SQLException | NoValueException e){
+					e.getMessage();
+				}
+			} else {
+				try {
+					Set<Object> columnValues = tbData.getDistinctColumnValues(table, tbSchema.getColumn(i));
+					attributeSet.add(new DiscreteAttribute(tbSchema.getColumn(i).getColumnName(), i, columnValues.toArray(new String[columnValues.size()])));
+				} catch (SQLException e) {
+					e.getMessage();
+				}
+			}
+		}
+		try {
+			db.closeConnection();
+		} catch (SQLException e) {
+			e.getMessage();
+		}
 	}
 
 	/**
