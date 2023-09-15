@@ -1,6 +1,7 @@
 package data;
 
 import java.util.*;
+import database.Example;
 
 /**
  * Classe data.Data modella l'insieme di transazioni (o tuple, o esempi)
@@ -18,6 +19,14 @@ public class Data {
 	 * Lista degli attributi in ciascuna tupla (schema della tabella di dati)
 	 */
 	private List<Attribute> attributeSet;
+
+	/**
+	 * Costruttore di classe
+	 * @param table nome della tabella nel DB
+	 */
+	public Data (String table) {
+
+	}
 
 	/**
 	 * Costruttore di classe:
@@ -465,72 +474,6 @@ public class Data {
 	}
 
 
-
-	/**
-	 * Inner class Example, modella ciascuna transazione
-	 */
-	class Example implements Comparable<Example> {
-		/**
-		 * array di Object che rappresentano la singola transazione (esempio), ovvero la riga della tabella
-		 */
-		private List<Object> example = new ArrayList<>();
-
-		/**
-		 * Aggiunge l'elemento in input in coda all'esempio
-		 * @param o elemento da aggiungere
-		 */
-		void add (Object o){
-			example.add(o);
-		}
-
-		/**
-		 * Restituisce l'i-esimo riferimento collezionato in example
-		 * @param i indice dell'elemento da restituire
-		 * @return riferimento all'elemento nella posizione i
-		 */
-		Object get(int i){
-			return example.get(i);
-		}
-
-		/**
-		 * Confronta due esempi, restituendo 0 se sono uguali,
-		 * altrimenti il risultato del compareTo sulla prima coppia di valori in disaccordo
-		 * @param ex the object to be compared.
-		 * @return 0 se sono uguali, 1 se alla prima coppia di valori in disaccordo il valore dell'oggetto corrente è maggiore
-		 * di quello del parametro, -1 altrimenti
-		 */
-		@Override
-		public int compareTo(Example ex) {
-			int i = 0;
-			for (Object obj : example) {
-				if (!obj.equals(ex.get(i)))
-					// faccio un cast a Comparable per poter utilizzare il compareTo
-					// dell'elemento contenuto in example, posso farlo perché so che l'elemento
-					// che troverò li sarà un oggetto di una classe che implementa Comparable
-					return ((Comparable) obj).compareTo(ex.get(i));
-				i++;
-			}
-			return 0;
-		}
-
-		@Override
-		public String toString() {
-			StringBuilder str = new StringBuilder("Example{");
-			int count = 0;
-			for (Object obj : example){
-				str.append(obj.toString());
-				count++;
-				if (count < example.size()){
-					str.append(", ");
-				}
-			}
-			str.append("}") ;
-			return  str.toString();
-		}
-	}
-
-
-	
 	public static void main(String args[]){
 		Data trainingSet=new Data();
 		System.out.println(trainingSet);

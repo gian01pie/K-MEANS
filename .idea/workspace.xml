@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 4 terminato&#10;- ~Completate le richieste~&#10;- ~@TODO da rivedere il codice per sostituire for con for each~&#10;Tutto OK">
-      <change afterPath="$PROJECT_DIR$/src/data/ContinuousItem.java" afterDir="false" />
+    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 5 terminato&#10;- Inserito ContinuousItem&#10;- Modificato Data con l'inserimento di ContinuousItem&#10;- Aggiunto utilizzo di RTTI&#10;- Aggiunta serializzazione e de-serializzazione di C in KMeansMiner&#10;Tutto OK">
+      <change afterPath="$PROJECT_DIR$/src/database/DatabaseConnectionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/DbAccess.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/EmptySetException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/Example.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/NoValueException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/QUERY_TYPE.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/TableData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/database/TableSchema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Attribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/ContinuousAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ContinuousAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DiscreteItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mining/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/Cluster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mining/ClusterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/ClusterSet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mining/KMeansMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/KMeansMiner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/K-MEANS.iml" beforeDir="false" afterPath="$PROJECT_DIR$/K-MEANS.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lab4" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,25 +45,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/JAVA_Projects/K-MEANS/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/REC_Uni/MAP/MAP 2023/mysql-connector-java-8.0.29.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\JAVA_Projects\K-MEANS\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\JAVA_Projects\K-MEANS\src\database" />
       <recent name="H:\JAVA_Projects\K-MEANS\src" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -216,7 +216,8 @@
     <MESSAGE value="LAB 1 terminato" />
     <MESSAGE value="LAB 2 terminato&#10;- Ricorda questione in put con Data comentato" />
     <MESSAGE value="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each" />
-    <option name="LAST_COMMIT_MESSAGE" value="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each" />
+    <MESSAGE value="LAB 5 terminato&#10;- Inserito ContinuousItem&#10;- Modificato Data con l'inserimento di ContinuousItem&#10;- Aggiunto utilizzo di RTTI&#10;- Aggiunta serializzazione e de-serializzazione di C in KMeansMiner&#10;Tutto OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="LAB 5 terminato&#10;- Inserito ContinuousItem&#10;- Modificato Data con l'inserimento di ContinuousItem&#10;- Aggiunto utilizzo di RTTI&#10;- Aggiunta serializzazione e de-serializzazione di C in KMeansMiner&#10;Tutto OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
