@@ -4,10 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 4 terminato&#10;- Completate le richieste&#10;- @TODO da rivedere il codice per sostituire for con for each">
+    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 4 terminato&#10;- ~Completate le richieste~&#10;- ~@TODO da rivedere il codice per sostituire for con for each~&#10;Tutto OK">
+      <change afterPath="$PROJECT_DIR$/src/data/ContinuousItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Attribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Attribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/ContinuousAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/ContinuousAttribute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DiscreteItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mining/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/Cluster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mining/ClusterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/ClusterSet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mining/KMeansMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/KMeansMiner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="lab4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,13 +77,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.MainTest">
-    <configuration name="Data" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="data.Data" />
-      <module name="K-MEANS" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DiscreteAttribute" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="data.DiscreteAttribute" />
       <module name="K-MEANS" />
@@ -92,6 +96,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KMeansMiner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="mining.KMeansMiner" />
+      <module name="K-MEANS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="mining.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,10 +139,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.MainTest" />
+        <item itemvalue="Application.KMeansMiner" />
         <item itemvalue="Application.Tuple" />
         <item itemvalue="Application.DiscreteItem" />
         <item itemvalue="Application.DiscreteAttribute" />
-        <item itemvalue="Application.Data" />
       </list>
     </recent_temporary>
   </component>
@@ -143,6 +160,7 @@
       <workItem from="1694179047530" duration="7563000" />
       <workItem from="1694186828375" duration="20573000" />
       <workItem from="1694266071441" duration="5209000" />
+      <workItem from="1694764370053" duration="14264000" />
     </task>
     <task id="LOCAL-00001" summary="LAB 1 terminato">
       <created>1694014156208</created>
@@ -176,7 +194,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="lab4" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -195,13 +225,12 @@
           <properties class="java.lang.IndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="2" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/mining/KMeansMiner.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="example.get(0)" />
-        <watch expression="temp" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

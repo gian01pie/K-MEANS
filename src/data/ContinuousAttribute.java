@@ -1,5 +1,7 @@
 package data;
 
+import java.io.Serializable;
+
 /**
  * Classe concreta data.ContinuousAttribute (estende data.Attribute)
  * che modella un attributo continuo (numerico).

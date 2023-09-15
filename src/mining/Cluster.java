@@ -2,13 +2,14 @@ package mining;
 
 import data.*;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Classe mining.Cluster che modella un Cluster ovvero un raggruppamento di data.Item
  */
-class Cluster {
+class Cluster implements Serializable {
 	/**
 	 * centroide del cluster
 	 */
