@@ -1,5 +1,7 @@
 package data;
 
+import java.io.Serializable;
+
 /**
  * Classe concreta data.DiscreteItem (estende data.Item) che rappresenta una coppia:
  * <li> Attributo discreto - valore discreto (e.g. Outlook = "Sunny")

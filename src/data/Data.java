@@ -63,20 +63,27 @@ public class Data {
 		ex12.add(new String("overcast"));
 		ex13.add(new String("rain"));
 
-		ex0.add(new String("hot"));
-		ex1.add(new String("hot"));
-		ex2.add(new String("hot"));
-		ex3.add(new String("mild"));
-		ex4.add(new String("cool"));
-		ex5.add(new String("cool"));
-		ex6.add(new String("cool"));
-		ex7.add(new String("mild"));
-		ex8.add(new String("cool"));
-		ex9.add(new String("mild"));
-		ex10.add(new String("mild"));
-		ex11.add(new String("mild"));
-		ex12.add(new String("hot"));
-		ex13.add(new String("mild"));
+		/*La scrittura:
+		* new Double (...)
+		* Viene marcata come deprecated il la documentazione di java dice:
+		* It is rarely appropriate to use this constructor.
+		* The static factory valueOf(double) is generally a better choice,
+		* as it is likely to yield significantly better space and time performance.
+		* */
+		ex0.add(Double.valueOf(37.5));
+		ex1.add(Double.valueOf(38.7));
+		ex2.add(Double.valueOf(37.5));
+		ex3.add(Double.valueOf(20.5));
+		ex4.add(Double.valueOf(20.7));
+		ex5.add(Double.valueOf(21.2));
+		ex6.add(Double.valueOf(20.5));
+		ex7.add(Double.valueOf(21.2));
+		ex8.add(Double.valueOf(21.2));
+		ex9.add(Double.valueOf(19.8));
+		ex10.add(Double.valueOf(3.5));
+		ex11.add(Double.valueOf(3.6));
+		ex12.add(Double.valueOf(3.5));
+		ex13.add(Double.valueOf(3.2));
 
 		ex0.add(new String("high"));
 		ex1.add(new String("high"));
@@ -249,11 +256,7 @@ public class Data {
 		outLookValues[2]="sunny";
 		attributeSet.add(new DiscreteAttribute("Outlook",0, outLookValues));
 
-		String temperatureValues[]=new String[3];
-		temperatureValues[0]="cool";
-		temperatureValues[1]="hot";
-		temperatureValues[2]="mild";
-		attributeSet.add(new DiscreteAttribute("Temperature",1, temperatureValues));
+		attributeSet.add(new ContinuousAttribute("Temperature",1,3.2,38.7));
 
 		String humidityValues[]=new String[2];
 		humidityValues[0]="high";
@@ -342,7 +345,12 @@ public class Data {
 	public Tuple getItemSet(int index){
 		Tuple tuple = new Tuple(attributeSet.size());
 		for(int i = 0; i < attributeSet.size(); i++)
-			tuple.add(new DiscreteItem(attributeSet.get(i), (String)data.get(index).get(i)),i);
+			if (attributeSet.get(i) instanceof ContinuousAttribute){
+				tuple.add(new ContinuousItem(attributeSet.get(i), getAttributeValue(index,i)),i);
+			}
+			else if (attributeSet.get(i) instanceof DiscreteAttribute){
+				tuple.add(new DiscreteItem(attributeSet.get(i), getAttributeValue(index,i)),i);
+			}
 		return tuple;
 	}
 
@@ -356,8 +364,7 @@ public class Data {
 	 */
 	public int[] sampling(int k) throws OutOfRangeSampleSize{
 		if (k <= 0 || k > data.size()){
-			throw new OutOfRangeSampleSize("Numero di cluster k maggiore " +
-					"rispetto al numero di centroidi generabili");
+			throw new OutOfRangeSampleSize();
 		}
 		int centroidIndexes[]=new int[k];
 		//choose k random different centroids in data.
@@ -409,9 +416,7 @@ public class Data {
 	 */
 	Object computePrototype(Set<Integer> idList, Attribute attribute){
 		if (attribute instanceof ContinuousAttribute) {
-			// non è necessario fare il cast esplicito ContinuousAttribute attribute
-			// poichè sappiamo già il tipo se instanceof restituisce true
-			return computePrototype(idList, attribute);
+			return computePrototype(idList, (ContinuousAttribute) attribute);
 		}
 		else {
 			return computePrototype(idList, (DiscreteAttribute) attribute);
@@ -443,6 +448,21 @@ public class Data {
 		return maxEntry.getKey();
 	}
 
+	/**
+	 * Determina il valore prototipo come media dei valori
+	 * osservati per attribute nelle transazioni di data aventi indice di riga in idList
+	 *
+	 * @param idList    insieme degli indici degli elementi di data appartenenti ad un cluster
+	 * @param attribute data.ContinuousAttribute su cui calcolare il centroide
+	 * @return valore del centroide rispetto al parametro continuo attribute
+	 */
+	private Double computePrototype(Set<Integer> idList, ContinuousAttribute attribute) {
+		Double avg = 0.0;
+		for (Integer i : idList) {
+			avg += (double) getAttributeValue(i, attribute.getIndex());
+		}
+		return (avg / idList.size());
+	}
 
 
 

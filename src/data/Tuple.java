@@ -1,5 +1,6 @@
 package data;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,7 +8,7 @@ import java.util.Set;
  * Classe data.Tuple che modella una tupla come sequenza di coppie attributo-valore
  * <li>e.g.: <pre>Outlook="sunny", Temperature="hot", ...</pre> </li>
  */
-public class Tuple {
+public class Tuple implements Serializable {
     /**
      * tupla di coppie attributo valore
      */

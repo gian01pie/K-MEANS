@@ -4,10 +4,12 @@ import data.Data;
 import data.OutOfRangeSampleSize;
 import data.Tuple;
 
+import java.io.Serializable;
+
 /**
  * Classe mining.ClusterSet che rappresenta un insieme di cluster (determinati tramite il K-means)
  */
-public class ClusterSet {
+public class ClusterSet implements Serializable {
     private Cluster C[];
     /**
      * Posizione valida per la memorizzazione di un nuovo cluster in C

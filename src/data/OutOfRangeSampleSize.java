@@ -6,7 +6,7 @@ package data;
  * generabili dall'insieme di transazione
  */
 public class OutOfRangeSampleSize extends Exception{
-    OutOfRangeSampleSize(){}
+    OutOfRangeSampleSize(){ super("Numero di cluster k <= 0 oppure maggiore rispetto al numero di centroidi generabili");}
     OutOfRangeSampleSize(String errorMsg){
         super(errorMsg);
     }
