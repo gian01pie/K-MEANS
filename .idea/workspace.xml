@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scriptSQL/createDB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/scriptSQL/createDB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Tuple.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/TableData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/TableData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mining/KMeansMiner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/KMeansMiner.java" afterDir="false" />
-    </list>
+    <list default="true" id="f58ba159-ed1e-46d6-ba61-a834e7fbe3c5" name="Changes" comment="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA&#10;Testato sembra tutto OK" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,34 +34,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;H:/JAVA_Projects/K-MEANS/scriptSQL/createDB.sql&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "H:/JAVA_Projects/K-MEANS/scriptSQL/createDB.sql",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "database.query.execution",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ],
-    &quot;RunConfigurationTargetLRU&quot;: [
-      &quot;feaa8f72-71af-499a-835a-308c2f0b7948&quot;,
-      &quot;8b4ff988-6cad-4f62-a9a3-1f71cc28d663&quot;,
-      &quot;2a013967-fbd8-4a72-81e2-664646395122&quot;
+    "RunConfigurationTargetLRU": [
+      "feaa8f72-71af-499a-835a-308c2f0b7948",
+      "8b4ff988-6cad-4f62-a9a3-1f71cc28d663",
+      "2a013967-fbd8-4a72-81e2-664646395122",
+      "eaf2b705-951a-4492-a105-8389a4caf5e4",
+      "eaf2b705-951a-4492-a105-8389a4caf5e4/schema/\"mapdb\""
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="H:\JAVA_Projects\K-MEANS\src" />
@@ -87,7 +79,7 @@
       <recent name="data" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainTest">
+  <component name="RunManager" selected="Database Script.createDB.sql">
     <configuration name="Data" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="data.Data" />
       <module name="K-MEANS" />
@@ -150,7 +142,7 @@
     <configuration name="createDB.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/scriptSQL/createDB.sql" />
       <script-mode>FILE</script-mode>
-      <data-source id="2a013967-fbd8-4a72-81e2-664646395122" />
+      <data-source id="eaf2b705-951a-4492-a105-8389a4caf5e4" namespace="schema/&quot;mapdb&quot;" />
       <method v="2" />
     </configuration>
     <list>
@@ -190,7 +182,7 @@
       <workItem from="1694851284474" duration="2986000" />
       <workItem from="1694854289160" duration="248000" />
       <workItem from="1694858551750" duration="33000" />
-      <workItem from="1694859503343" duration="9947000" />
+      <workItem from="1694859503343" duration="10070000" />
     </task>
     <task id="LOCAL-00001" summary="LAB 1 terminato">
       <created>1694014156208</created>
@@ -227,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694817050984</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA&#10;Testato sembra tutto OK">
+      <created>1694873738957</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1694873738957</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +262,8 @@
     <MESSAGE value="LAB 5 terminato&#10;- Inserito ContinuousItem&#10;- Modificato Data con l'inserimento di ContinuousItem&#10;- Aggiunto utilizzo di RTTI&#10;- Aggiunta serializzazione e de-serializzazione di C in KMeansMiner&#10;Tutto OK" />
     <MESSAGE value="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- @TODO nuovo costruttore di DATA" />
     <MESSAGE value="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA" />
-    <option name="LAST_COMMIT_MESSAGE" value="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA" />
+    <MESSAGE value="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA&#10;Testato sembra tutto OK" />
+    <option name="LAST_COMMIT_MESSAGE" value="LAB 6 quasi - terminato&#10;- Inserito package database&#10;- Aggiunte tutte le classi richieste&#10;- Rimossa inner class Example&#10;- nuovo costruttore di DATA&#10;Testato sembra tutto OK" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
