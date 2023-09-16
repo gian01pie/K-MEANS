@@ -12,11 +12,11 @@ public class MainTest {
      * @param args
      */
     public static void main(String[] args) {
-        Data data = new Data("MapDB");
+        Data data = new Data("playtennis");
         System.out.println(data);
-        KMeansMiner kmeans = null;
 
         while (true) {
+            KMeansMiner kmeans = null;
             kmeans = loadClustersFromFile(kmeans);
             if (kmeans == null) {
                 int k = getClusterCountFromUser();
@@ -54,7 +54,7 @@ public class MainTest {
             if (Character.toLowerCase(choice) == 'n') {
                 break;
             } else if (Character.toLowerCase(choice) == 'y') {
-                System.out.println("Inserire il nome del file o il percorso se si trova in una directory diversa:\n");
+                System.out.println("Inserire 'NomeFile.bin' o il percorso se si trova in una directory diversa:\n");
                 String fileName = Keyboard.readString();
                 try {
                     kmeans = new KMeansMiner(fileName);

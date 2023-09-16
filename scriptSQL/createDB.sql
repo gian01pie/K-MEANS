@@ -3,7 +3,7 @@ CREATE DATABASE MapDB;
 commit;
 
 CREATE USER 'MapUser'@'localhost' IDENTIFIED BY 'map';
-GRANT CREATE, SELECT, INSERT, DELETE ON MapDB.* TO MapUser@localhost IDENTIFIED BY 'map';
+GRANT CREATE, SELECT, INSERT, DELETE ON MapDB.* TO 'MapUser'@'localhost';
 CREATE TABLE MapDB.playtennis(
        outlook varchar(10),
        temperature float(5,2),

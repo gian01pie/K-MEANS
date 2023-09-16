@@ -1,5 +1,6 @@
 package database;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -50,8 +51,12 @@ public class TableData {
 		try (Statement s = db.getConnection().createStatement();
 			 // Effettuo la query
 			 ResultSet r = s.executeQuery("SELECT DISTINCT * FROM " + table)) { //try-with-resources
-			// se viene restituito un ResultSet con almeno un valore
-			if (r.next()) {
+			// Quando il ResultSet viene restituito ha un cursore che punta immediatamente prima del suo inizio,
+			// per questo motivo tramite r.next() metto il cursore nella posizione iniziale del ResultSet
+			// r.next() restiuisce treu se c'è un elemento false se non c'è
+			if (r.next()) {// se viene restituito un ResultSet con almeno un valore
+				// Per quanto detto sopra ho spostato già il cursore alla prima posizione
+				// Quindi uso il do while per far spostare il cursore alla fine delle operazioni
 				do {
 					Example ex = new Example();
 					// Ciclo sul numero di colonne della tabella
@@ -120,16 +125,11 @@ public class TableData {
 	 */
 	public Object getAggregateColumnValue(String table, Column column, QUERY_TYPE aggregate) throws SQLException, NoValueException {
 		Object value = null;
-		String valueAggregator = "";
-		switch (aggregate) {
-			case MIN -> valueAggregator = "MIN";
-			case MAX -> valueAggregator = "MAX";
-		}
 		// Creo uno Statement per poter eseguire una query
+		String query = "SELECT " + aggregate.toString() + "(" + column.getColumnName() + ") AS " + column.getColumnName() + " FROM " + table + ";";
 		try (Statement s = db.getConnection().createStatement();
 			 // Effettuo la query
-			 ResultSet r = s.executeQuery("SELECT " + valueAggregator + "(" + column.getColumnName() + ")" + " FROM " + table)) { //try-with-resources
-
+			 ResultSet r = s.executeQuery(query)) { //try-with-resources
 			if (r.next()) { //Se c'è un elemento
 				// se la colonna osservata ha valori numerici
 				if (column.isNumber()) {

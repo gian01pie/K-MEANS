@@ -119,7 +119,7 @@ public class Tuple implements Serializable {
         System.out.println("t1.toString: " + t1);
         System.out.println("getDistance: " + t.getDistance(t1));
         //avg Distance
-        Data d = new Data();
+        Data d = new Data("table");
         Set<Integer> cs = new HashSet<>();
         cs.add(0);
         cs.add(1);

@@ -82,7 +82,7 @@ class DiscreteAttribute extends Attribute implements Iterable<String> {
 
         //Test di frequency:
         // Creiamo un nuovo Data (il costruttore di Data lo avvalora di tutti i dati quindi non serve aggiungere niente)
-        Data d = new Data();
+        Data d = new Data("playtennis");
         // Ci prendiamo il riferimento all'attributo in posizione 0 dell'attributeSet di data
         // pocihè restituisce un Attributo facciamo il cast a DiscreteAttribute, questo lo possiamo fare perchè sono certo
         // che li dentro ci sia effettivamente un DiscreteAttribute, in generale dovrei usare is istance

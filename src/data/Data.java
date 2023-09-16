@@ -32,7 +32,10 @@ public class Data {
 		try {
 			db.initConnection();
 		} catch (DatabaseConnectionException e){
-			e.getMessage();
+			// Se si verifica un qualche errore è inutile proseguire
+			// perchè si potrebbe avere dati compromessi
+			System.out.println(e.getMessage());
+			return;
 		}
 
 		// Recupero la tabella dal database
@@ -42,7 +45,10 @@ public class Data {
 			data = tbData.getDistinctTransazioni(table);
 			tbSchema = new TableSchema(db, table);
 		} catch (EmptySetException | SQLException e){
-			e.getMessage();
+			// Se si verifica un qualche errore è inutile proseguire
+			// perchè si potrebbe avere dati compromessi
+			System.out.println(e.getMessage());
+			return;
 		}
 
 		// numberOfExamples
@@ -58,21 +64,27 @@ public class Data {
 					double max = (double) tbData.getAggregateColumnValue(table, tbSchema.getColumn(i), QUERY_TYPE.MAX);
 					attributeSet.add(new ContinuousAttribute(tbSchema.getColumn(i).getColumnName(), i, min, max));
 				} catch (SQLException | NoValueException e){
-					e.getMessage();
+					// Se si verifica un qualche errore è inutile proseguire
+					// perchè si potrebbe avere dati compromessi
+					System.out.println(e.getMessage());
+					return;
 				}
 			} else {
 				try {
 					Set<Object> columnValues = tbData.getDistinctColumnValues(table, tbSchema.getColumn(i));
 					attributeSet.add(new DiscreteAttribute(tbSchema.getColumn(i).getColumnName(), i, columnValues.toArray(new String[columnValues.size()])));
 				} catch (SQLException e) {
-					e.getMessage();
+					// Se si verifica un qualche errore è inutile proseguire
+					// perchè si potrebbe avere dati compromessi
+					System.out.println(e.getMessage());
+					return;
 				}
 			}
 		}
 		try {
 			db.closeConnection();
 		} catch (SQLException e) {
-			e.getMessage();
+			System.out.println(e.getMessage());
 		}
 	}
 
@@ -83,7 +95,7 @@ public class Data {
 	 * <li> Inizializza attributeSet creando cinque oggetti di tipo data.DiscreteAttribute
 	 * <li> Inizializza numberOfExamples
 	 * </ul><p>
-	 */
+	 *//*
 	public Data(){
 		//data
 
@@ -120,13 +132,13 @@ public class Data {
 		ex12.add(new String("overcast"));
 		ex13.add(new String("rain"));
 
-		/*La scrittura:
+		*//*La scrittura:
 		* new Double (...)
 		* Viene marcata come deprecated il la documentazione di java dice:
 		* It is rarely appropriate to use this constructor.
 		* The static factory valueOf(double) is generally a better choice,
 		* as it is likely to yield significantly better space and time performance.
-		* */
+		* *//*
 		ex0.add(Double.valueOf(37.5));
 		ex1.add(Double.valueOf(38.7));
 		ex2.add(Double.valueOf(37.5));
@@ -187,7 +199,7 @@ public class Data {
 		ex12.add(new String("yes"));
 		ex13.add(new String("no"));
 
-		/*ex0.add(new String(""));
+		*//*ex0.add(new String(""));
 		ex1.add(new String(""));
 		ex2.add(new String(""));
 		ex3.add(new String(""));
@@ -200,7 +212,7 @@ public class Data {
 		ex10.add(new String(""));
 		ex11.add(new String(""));
 		ex12.add(new String(""));
-		ex13.add(new String(""));*/
+		ex13.add(new String(""));*//*
 
 
 		tempData.add(ex0);
@@ -220,7 +232,7 @@ public class Data {
 
 		data = new ArrayList<Example>(tempData);
 
-		/*data[0][0]=new String ("sunny");
+		*//*data[0][0]=new String ("sunny");
 		data[1][0]=new String ("sunny");
 		data[2][0]=new String ("sunny");
 		data[3][0]=new String ("rain");
@@ -295,7 +307,7 @@ public class Data {
 		data[10][4]=new String ("yes");
 		data[11][4]=new String ("yes");
 		data[12][4]=new String ("yes");
-		data[13][4]=new String ("yes");*/
+		data[13][4]=new String ("yes");*//*
 		
 		
 		// numberOfExamples
@@ -330,7 +342,7 @@ public class Data {
 		playTennisValues[1]="yes";
 		attributeSet.add(new DiscreteAttribute("PlayTennis",4, playTennisValues));
 
-	}
+	}*/
 
 	/**
 	 * @return cardinalità dell'insieme di transazioni
@@ -523,8 +535,12 @@ public class Data {
 
 
 	public static void main(String args[]){
-		Data trainingSet=new Data();
+		Data trainingSet=new Data("playtennis");
 		System.out.println(trainingSet);
-		System.out.println(trainingSet.compare(0,1));
+		Set<Integer> idlist = new HashSet<Integer>();
+		idlist.add(0);
+		idlist.add(2);
+		idlist.add(3);
+		System.out.println(trainingSet.computePrototype(idlist, trainingSet.getAttribute(1)));
 	}
 }
