@@ -108,7 +108,7 @@ public class KMeansMiner {
 
     public static void main(String[] args){
         try {
-            Data data = new Data();
+            Data data = new Data("table");
             System.out.println(data);
             KMeansMiner kmeans = new KMeansMiner("temp.bin");
             System.out.println(kmeans.getC().toString());

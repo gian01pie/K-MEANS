@@ -1,6 +1,9 @@
 package data;
 
+import java.sql.SQLException;
 import java.util.*;
+
+import database.*;
 
 /**
  * Classe data.Data modella l'insieme di transazioni (o tuple, o esempi)
@@ -11,7 +14,7 @@ public class Data {
 	 */
 	private List<Example> data;
 	/**
-	 * cardinalità dell'insieme di transazioni (i.e. numero di esempi in data)
+	 * Cardinalità dell'insieme di transazioni (i.e. numero di esempi in data)
 	 */
 	private int numberOfExamples;
 	/**
@@ -20,13 +23,79 @@ public class Data {
 	private List<Attribute> attributeSet;
 
 	/**
+	 * Costruttore di classe
+	 * @param table nome della tabella nel DB
+	 */
+	public Data (String table) {
+		// Avvio la connesione
+		DbAccess db = new DbAccess();
+		try {
+			db.initConnection();
+		} catch (DatabaseConnectionException e){
+			// Se si verifica un qualche errore è inutile proseguire
+			// perchè si potrebbe avere dati compromessi
+			System.out.println(e.getMessage());
+			return;
+		}
+
+		// Recupero la tabella dal database
+		TableData tbData = new TableData(db);
+		TableSchema tbSchema = null;
+		try {
+			data = tbData.getDistinctTransazioni(table);
+			tbSchema = new TableSchema(db, table);
+		} catch (EmptySetException | SQLException e){
+			// Se si verifica un qualche errore è inutile proseguire
+			// perchè si potrebbe avere dati compromessi
+			System.out.println(e.getMessage());
+			return;
+		}
+
+		// numberOfExamples
+		numberOfExamples = data.size();
+
+		//attributeSet
+		attributeSet = new LinkedList<Attribute>();
+
+		for (int i = 0; i < tbSchema.getNumberOfAttributes(); i++){
+			if (tbSchema.getColumn(i).isNumber()){
+				try {
+					double min = (double) tbData.getAggregateColumnValue(table, tbSchema.getColumn(i), QUERY_TYPE.MIN);
+					double max = (double) tbData.getAggregateColumnValue(table, tbSchema.getColumn(i), QUERY_TYPE.MAX);
+					attributeSet.add(new ContinuousAttribute(tbSchema.getColumn(i).getColumnName(), i, min, max));
+				} catch (SQLException | NoValueException e){
+					// Se si verifica un qualche errore è inutile proseguire
+					// perchè si potrebbe avere dati compromessi
+					System.out.println(e.getMessage());
+					return;
+				}
+			} else {
+				try {
+					Set<Object> columnValues = tbData.getDistinctColumnValues(table, tbSchema.getColumn(i));
+					attributeSet.add(new DiscreteAttribute(tbSchema.getColumn(i).getColumnName(), i, columnValues.toArray(new String[columnValues.size()])));
+				} catch (SQLException e) {
+					// Se si verifica un qualche errore è inutile proseguire
+					// perchè si potrebbe avere dati compromessi
+					System.out.println(e.getMessage());
+					return;
+				}
+			}
+		}
+		try {
+			db.closeConnection();
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	/**
 	 * Costruttore di classe:
 	 * <p><ul>
 	 * <li> Inizializza la matrice data [ ][ ] con transazioni di esempio (14 esempi e 5 attributi al momento)
 	 * <li> Inizializza attributeSet creando cinque oggetti di tipo data.DiscreteAttribute
 	 * <li> Inizializza numberOfExamples
 	 * </ul><p>
-	 */
+	 *//*
 	public Data(){
 		//data
 
@@ -63,13 +132,13 @@ public class Data {
 		ex12.add(new String("overcast"));
 		ex13.add(new String("rain"));
 
-		/*La scrittura:
+		*//*La scrittura:
 		* new Double (...)
 		* Viene marcata come deprecated il la documentazione di java dice:
 		* It is rarely appropriate to use this constructor.
 		* The static factory valueOf(double) is generally a better choice,
 		* as it is likely to yield significantly better space and time performance.
-		* */
+		* *//*
 		ex0.add(Double.valueOf(37.5));
 		ex1.add(Double.valueOf(38.7));
 		ex2.add(Double.valueOf(37.5));
@@ -130,7 +199,7 @@ public class Data {
 		ex12.add(new String("yes"));
 		ex13.add(new String("no"));
 
-		/*ex0.add(new String(""));
+		*//*ex0.add(new String(""));
 		ex1.add(new String(""));
 		ex2.add(new String(""));
 		ex3.add(new String(""));
@@ -143,7 +212,7 @@ public class Data {
 		ex10.add(new String(""));
 		ex11.add(new String(""));
 		ex12.add(new String(""));
-		ex13.add(new String(""));*/
+		ex13.add(new String(""));*//*
 
 
 		tempData.add(ex0);
@@ -163,7 +232,7 @@ public class Data {
 
 		data = new ArrayList<Example>(tempData);
 
-		/*data[0][0]=new String ("sunny");
+		*//*data[0][0]=new String ("sunny");
 		data[1][0]=new String ("sunny");
 		data[2][0]=new String ("sunny");
 		data[3][0]=new String ("rain");
@@ -238,7 +307,7 @@ public class Data {
 		data[10][4]=new String ("yes");
 		data[11][4]=new String ("yes");
 		data[12][4]=new String ("yes");
-		data[13][4]=new String ("yes");*/
+		data[13][4]=new String ("yes");*//*
 		
 		
 		// numberOfExamples
@@ -273,7 +342,7 @@ public class Data {
 		playTennisValues[1]="yes";
 		attributeSet.add(new DiscreteAttribute("PlayTennis",4, playTennisValues));
 
-	}
+	}*/
 
 	/**
 	 * @return cardinalità dell'insieme di transazioni
@@ -465,75 +534,13 @@ public class Data {
 	}
 
 
-
-	/**
-	 * Inner class Example, modella ciascuna transazione
-	 */
-	class Example implements Comparable<Example> {
-		/**
-		 * array di Object che rappresentano la singola transazione (esempio), ovvero la riga della tabella
-		 */
-		private List<Object> example = new ArrayList<>();
-
-		/**
-		 * Aggiunge l'elemento in input in coda all'esempio
-		 * @param o elemento da aggiungere
-		 */
-		void add (Object o){
-			example.add(o);
-		}
-
-		/**
-		 * Restituisce l'i-esimo riferimento collezionato in example
-		 * @param i indice dell'elemento da restituire
-		 * @return riferimento all'elemento nella posizione i
-		 */
-		Object get(int i){
-			return example.get(i);
-		}
-
-		/**
-		 * Confronta due esempi, restituendo 0 se sono uguali,
-		 * altrimenti il risultato del compareTo sulla prima coppia di valori in disaccordo
-		 * @param ex the object to be compared.
-		 * @return 0 se sono uguali, 1 se alla prima coppia di valori in disaccordo il valore dell'oggetto corrente è maggiore
-		 * di quello del parametro, -1 altrimenti
-		 */
-		@Override
-		public int compareTo(Example ex) {
-			int i = 0;
-			for (Object obj : example) {
-				if (!obj.equals(ex.get(i)))
-					// faccio un cast a Comparable per poter utilizzare il compareTo
-					// dell'elemento contenuto in example, posso farlo perché so che l'elemento
-					// che troverò li sarà un oggetto di una classe che implementa Comparable
-					return ((Comparable) obj).compareTo(ex.get(i));
-				i++;
-			}
-			return 0;
-		}
-
-		@Override
-		public String toString() {
-			StringBuilder str = new StringBuilder("Example{");
-			int count = 0;
-			for (Object obj : example){
-				str.append(obj.toString());
-				count++;
-				if (count < example.size()){
-					str.append(", ");
-				}
-			}
-			str.append("}") ;
-			return  str.toString();
-		}
-	}
-
-
-	
 	public static void main(String args[]){
-		Data trainingSet=new Data();
+		Data trainingSet=new Data("playtennis");
 		System.out.println(trainingSet);
-		System.out.println(trainingSet.compare(0,1));
+		Set<Integer> idlist = new HashSet<Integer>();
+		idlist.add(0);
+		idlist.add(2);
+		idlist.add(3);
+		System.out.println(trainingSet.computePrototype(idlist, trainingSet.getAttribute(1)));
 	}
 }
