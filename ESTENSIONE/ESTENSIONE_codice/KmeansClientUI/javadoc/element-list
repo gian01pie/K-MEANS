@@ -1,0 +1,5 @@
+module:com.map.kmeansclientui
+com.map.kmeansclientui
+com.map.kmeansclientui.model
+com.map.kmeansclientui.model.exception
+com.map.kmeansclientui.model.keyboardinput

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<HBox xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.map.kmeansclientui.ConnectionController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="266.0" style="-fx-background-color: #0F4C75;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="-67.0" layoutY="-100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@k-means_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#bbe1fa" layoutX="53.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="K-Means è un applicazione che" />
+                  <Text fill="#bbe1fa" layoutX="53.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="permette di trovare dei cluster" />
+                  <Text fill="#bbe1fa" layoutX="59.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="da un insieme di dati raccolti" />
+                  <Text fill="#bbe1fa" layoutX="58.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Text fill="#bbe1fa" layoutX="55.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="progetto MAP a.a. 2022-2023" />
+                  <Text fill="#bbe1fa" layoutX="95.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gianluca Laera" textAlignment="CENTER" />
+               </children>
+            </Pane>
+         </children>
+      </VBox>
+      <VBox prefHeight="600.0" prefWidth="534.0" spacing="10.0" style="-fx-background-color: #1B262C;">
+         <children>
+            <TextField fx:id="ip" promptText="Indirizzo IP" styleClass="text-field" stylesheets="@style.css" />
+            <TextField fx:id="port" promptText="Porta" styleClass="text-field" stylesheets="@style.css" />
+            <Button fx:id="connectionBtn" mnemonicParsing="false" onAction="#connectToServer" stylesheets="@style.css" text="Connect" textFill="#bbe1fa">
+               <VBox.margin>
+                  <Insets left="25.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="200.0" left="200.0" right="200.0" top="200.0" />
+         </padding>
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+      </VBox>
+   </children>
+</HBox>

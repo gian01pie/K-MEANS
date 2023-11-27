@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="KmeansServer:jar" />
+    </artifacts-to-build>
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="e46f66cc-b49e-4865-a8a8-b34de5636dfa" name="Changes" comment="Lab 7 Server:&#10;- Terminato&#10;- Javadoc Aggiunto">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ServerOneClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ServerOneClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Data.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/DiscreteAttribute.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/OutOfRangeSampleSize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/Tuple.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/Tuple.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/DatabaseConnectionException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DatabaseConnectionException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/DbAccess.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/DbAccess.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/EmptySetException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/EmptySetException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/Example.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/Example.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/NoValueException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/NoValueException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/QUERY_TYPE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/QUERY_TYPE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/TableSchema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/TableSchema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mining/Cluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/Cluster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mining/ClusterSet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/mining/ClusterSet.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 2
+}]]></component>
+  <component name="ProjectId" id="2VU2JAwbpYeXQI8cvFGjv1Rvktg" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "H:/JAVA_Projects/_MAP_FINALE/BASE/KmeansClient",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="H:\JAVA_Projects\KmeansServer" />
+      <recent name="H:\JAVA_Projects\KmeansServer\src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JAR Application.KmeansServerJar">
+    <configuration name="MultiServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MultiServer" />
+      <module name="KmeansServer" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KmeansServerJar" type="JarApplication">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/KmeansServer_jar/KmeansServer.jar" />
+      <option name="WORKING_DIRECTORY" value="H:\JAVA_Projects\KmeansServer" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="KmeansServer:jar" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MultiServer" />
+      <item itemvalue="JAR Application.KmeansServerJar" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MultiServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e46f66cc-b49e-4865-a8a8-b34de5636dfa" name="Changes" comment="" />
+      <created>1694876266601</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694876266601</updated>
+      <workItem from="1694876267741" duration="13559000" />
+      <workItem from="1694939346512" duration="5401000" />
+      <workItem from="1694945041613" duration="1274000" />
+      <workItem from="1694946347731" duration="154000" />
+      <workItem from="1694946622829" duration="4060000" />
+      <workItem from="1694957496932" duration="1764000" />
+      <workItem from="1695112301442" duration="353000" />
+      <workItem from="1695112954896" duration="820000" />
+      <workItem from="1695114522921" duration="1198000" />
+      <workItem from="1695153698273" duration="2435000" />
+    </task>
+    <task id="LOCAL-00001" summary="Lab 7 Server:&#10;- Terminato">
+      <created>1694943892887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1694943892887</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Lab 7 Server:&#10;- Terminato&#10;- Javadoc Aggiunto">
+      <created>1694959246275</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1694959246275</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Lab 7 Server:&#10;- Terminato" />
+    <MESSAGE value="Lab 7 Server:&#10;- Terminato&#10;- Javadoc Aggiunto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lab 7 Server:&#10;- Terminato&#10;- Javadoc Aggiunto" />
+  </component>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.map.kmeansclientui.MainViewController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="266.0" style="-fx-background-color: #0F4C75;">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="-67.0" layoutY="-100.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" smooth="false">
+                     <image>
+                        <Image url="@k-means_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="loadFilebtn" mnemonicParsing="false" onAction="#showContentLoadFile" prefHeight="40.0" prefWidth="266.0" styleClass="button-menu" stylesheets="@style.css" text="Carica da file" textFill="#bbe1fa">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="computeClusterbtn" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#showContentComputeCluster" prefHeight="40.0" prefWidth="266.0" styleClass="button-menu" stylesheets="@style.css" text="Calcola Cluster" textFill="#bbe1fa" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <AnchorPane fx:id="mainViewScene" prefHeight="600.0" prefWidth="534.0" style="-fx-background-color: #1B262C;" />
+   </children>
+</HBox>

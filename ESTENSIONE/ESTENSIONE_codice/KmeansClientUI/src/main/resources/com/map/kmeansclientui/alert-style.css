@@ -1,0 +1,36 @@
+/* Color Palette
+#1B262C (Dark Blue-Gray)
+#0F4C75 (Deep Blue)
+#3282B8 (Light Blue)
+#BBE1FA (Pale Blue)
+#FF6B6B (Warm Reddish-Pink)
+ */
+
+/* Modifica il colore del titolo dell'alert */
+.alert .header-panel {
+    -fx-background-color: #1B262C; /* Colore del testo personalizzato */
+}
+
+.alert .header-panel .label {
+    -fx-text-fill: #FF6B6B; /* Specify your desired text color */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Modifica il colore del contenuto dell'alert */
+.alert .content {
+    -fx-background-color: #1B262C;
+    -fx-text-fill: #BBE1FA;
+}
+
+.alert .button-bar {
+    -fx-background-color: #1B262C;
+}
+
+.alert .button {
+    -fx-background-color: #3282B8;
+    -fx-text-fill: #BBE1FA;
+}
+.alert .button:hover {
+    -fx-background-color: #FF6B6B; /* Colore di sfondo al passaggio del mouse */
+}
