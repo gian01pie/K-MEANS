@@ -8,7 +8,7 @@ Progettare e realizzare un sistema clientserver denominato “K-MEANS”.
 Il Progetto è suddiviso in 2 parti:
 - Versione Base: si basa sulle consegne ricevute a lezione
 - Versione Estensione: versione Base + Estensione sviluppata individualmente
-- - Estensione: Interfaccia grafica
+  - Estensione: Interfaccia grafica
 
 # K-MEANS
 
