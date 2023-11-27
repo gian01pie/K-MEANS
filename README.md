@@ -1,5 +1,5 @@
 # Introduzione
-Progetto per il corso di Metodi Avanzati di Programmazione A.A. 2022-2023
+Progetto per il corso di "Metodi Avanzati di Programmazione" A.A. 2022-2023 Università degli Studi di Bari Aldo Moro
 
 Progettare e realizzare un sistema clientserver denominato “K-MEANS”.
 - Il server include funzionalità di data mining per la scoperta di cluster di dati.
