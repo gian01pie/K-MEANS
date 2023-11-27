@@ -1,0 +1,64 @@
+/* Color Palette
+#1B262C (Dark Blue-Gray)
+#0F4C75 (Deep Blue)
+#3282B8 (Light Blue)
+#BBE1FA (Pale Blue)
+#FF6B6B (Warm Reddish-Pink)
+ */
+
+/*Classe Bottone */
+.button {
+    -fx-display: inline-block;
+    -fx-background-color: #3282B8;
+    -fx-color: #BBE1FA;
+    -fx-padding: 8px 18px;
+    -fx-border: none;
+    -fx-border-radius: 4px;
+    -fx-text-align: center;
+    -fx-text-decoration: none;
+    -fx-font-size: 14px;
+    -fx-cursor: pointer;
+    -fx-transition: background-color 0.3s;
+}
+.button:hover {
+    -fx-background-color: #FF6B6B; /* Colore di sfondo al passaggio del mouse */
+}
+
+/*Classe testo input*/
+.text-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #BBE1FA;
+    -fx-text-inner-color: #BBE1FA;
+    -fx-border-color: #3282B8;
+    -fx-border-width: 2px;
+    -fx-border-radius: 4px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused {
+    -fx-border-color: #FF6B6B;
+}
+
+.button-menu {
+    -fx-background-color: transparent;
+    -fx-border-color: #3282B8;
+    -fx-text-fill: #BBE1FA;
+    -fx-font-family: "Roboto", sans-serif;
+    -fx-font-size: 14px;
+    -fx-pref-height: 40px;
+    -fx-border-width: 0px 0px 2px 0px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-padding: 5px 15px;
+}
+.button-menu:hover {
+    -fx-background-color: #FF6B6B; /* Colore di sfondo al passaggio del mouse */
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
