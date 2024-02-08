@@ -40,7 +40,7 @@ Prima di poter utilizzare l'applicazione è necessario soddisfare i seguenti pre
 ### Avviare l'applicazione
 Per prima cosa verificare che il server MySQL sia attivo:
 > Se su Windows:
-> - premere: `shift + r`
+> - premere: `windows + r`
 > - digitare nella finestra aperta: `services.msc` e premere ok
 > - scorrere i servizi fino a MySQL
 > - se il server non è attivo premere su avvia
